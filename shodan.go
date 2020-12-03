@@ -221,8 +221,8 @@ type Error struct {
 	Error string `json:"error"`
 }
 
-// New returns a new Client.
-func New(key string) *Client {
+// NewClient returns a new Client.
+func NewClient(key string) *Client {
 	return &Client{
 		Key: key,
 	}
@@ -230,7 +230,7 @@ func New(key string) *Client {
 
 // Host calls '/shodan/host/{ip}' and returns the unmarshalled response.
 // ip is the IP address to search for.
-// opts are all query paramters to pass in the request. You do not have to provide your API key.
+// opts are all query parameters to pass in the request. You do not have to provide your API key.
 func (c *Client) Host(ip string, opts url.Values) (*Host, error) {
 	h := &Host{}
 	opts.Set("key", c.Key)

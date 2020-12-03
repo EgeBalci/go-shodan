@@ -12,7 +12,7 @@ func TestAPIInfo(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	i, err := c.APIInfo()
 	if err != nil {
 		t.Error("error returned from APIInfo")
@@ -28,7 +28,7 @@ func TestHostCount(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	hc, err := c.HostCount("apache", []string{})
 	if err != nil {
 		t.Error("error returned from HoustCount")
@@ -44,7 +44,7 @@ func TestHostSearch(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	hs, err := c.HostSearch("apache", []string{}, url.Values{})
 	if err != nil {
 		t.Error("error returned HostSearch")
@@ -60,7 +60,7 @@ func TestHostSearchTokens(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	if _, err := c.HostSearchTokens("apache"); err != nil {
 		t.Error("error returned HostSearchTokens")
 		t.Log(err)
@@ -72,7 +72,7 @@ func TestProtocols(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	p, err := c.Protocols()
 	if err != nil {
 		t.Error("error returned from Protocols")
@@ -88,7 +88,7 @@ func TestServices(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	s, err := c.Services()
 	if err != nil {
 		t.Error("error returned from Services")
@@ -104,7 +104,7 @@ func TestQuery(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	if _, err := c.Query(url.Values{}); err != nil {
 		t.Error("error returned from Query")
 		t.Log(err)
@@ -116,7 +116,7 @@ func TestQuerySearch(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	if _, err := c.QuerySearch("apache", url.Values{}); err != nil {
 		t.Error("error returned from QuerySearch")
 		t.Log(err)
@@ -128,7 +128,7 @@ func TestQueryTags(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	if _, err := c.QueryTags(url.Values{}); err != nil {
 		t.Error("error returned form QueryTags")
 		t.Log(err)
@@ -140,7 +140,7 @@ func TestExploits(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 	e, err := c.Exploits("apache", []string{})
 	if err != nil {
 		t.Error("error returned from Exploits")
@@ -156,7 +156,7 @@ func TestHost(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 
 	result, err := c.Host("104.131.56.170", url.Values{})
 	if err != nil {
@@ -173,7 +173,7 @@ func TestResolve(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 
 	result, err := c.DNSResolve([]string{"stacktitan.com"})
 	if err != nil {
@@ -196,7 +196,7 @@ func TestReverse(t *testing.T) {
 	if k == "" {
 		t.Fatal("SHODAN_API_KEY environment variable not set")
 	}
-	c := New(k)
+	c := NewClient(k)
 
 	result, err := c.DNSReverse([]string{"104.131.56.170"})
 	if err != nil {
